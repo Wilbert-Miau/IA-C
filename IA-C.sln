@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_MVC_IA-CAST", "Web_MVC_IA-CAST\Web_MVC_IA-CAST.csproj", "{F30466BC-CA77-48CA-A7F6-3CE36F49187E}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F30466BC-CA77-48CA-A7F6-3CE36F49187E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30466BC-CA77-48CA-A7F6-3CE36F49187E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30466BC-CA77-48CA-A7F6-3CE36F49187E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30466BC-CA77-48CA-A7F6-3CE36F49187E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
