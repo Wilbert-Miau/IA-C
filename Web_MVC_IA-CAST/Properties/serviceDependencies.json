@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:Web_MVC_IA_CASTContext"
+    }
+  }
+}
