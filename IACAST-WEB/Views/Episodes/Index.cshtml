@@ -21,11 +21,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Released)
             </th>
+           
             <th>
-                @Html.DisplayNameFor(model => model.TheGuest)
+                @Html.DisplayNameFor(model => model.Invitado)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TheHost)
+                @Html.DisplayNameFor(model => model.Anfitrion)
             </th>
             <th></th>
         </tr>
@@ -42,12 +43,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Released)
             </td>
+           
+            
             <td>
-                @Html.DisplayFor(modelItem => item.TheGuest)
+                @Html.DisplayFor(modelItem => item.Invitado)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TheHost)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anfitrion)
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

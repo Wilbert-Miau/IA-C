@@ -47,7 +47,8 @@ namespace IACAST_WEB.Controllers
         public IActionResult Create()
         {
 
-           ViewBag.guestBag= _context.Guest;
+           ViewBag.guestBag= _context.Guest.Select(a => a.Name);
+            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
 
 
             return View();
@@ -58,10 +59,10 @@ namespace IACAST_WEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,TheGuest,TheHost")] Episode episode)
+        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,Invitado,Anfitrion")] Episode episode)
         {
             if (ModelState.IsValid)
-            {
+            {   
                 _context.Add(episode);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -71,11 +72,16 @@ namespace IACAST_WEB.Controllers
 
         // GET: Episodes/Edit/5
         public async Task<IActionResult> Edit(int? id)
+
         {
+            ViewBag.guestBag = _context.Guest.Select(a => a.Name);
+
+            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
             if (id == null || _context.Episode == null)
             {
                 return NotFound();
             }
+
 
             var episode = await _context.Episode.FindAsync(id);
             if (episode == null)
@@ -90,7 +96,7 @@ namespace IACAST_WEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,TheGuest,TheHost")] Episode episode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,Invitado,Anfitrion")] Episode episode)
         {
             if (id != episode.Id)
             {

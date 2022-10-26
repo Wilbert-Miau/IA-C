@@ -4,6 +4,7 @@ using IACAST_WEB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IACAST_WEB.Migrations
 {
     [DbContext(typeof(IACAST_WEBContext))]
-    partial class IACAST_WEBContextModelSnapshot : ModelSnapshot
+    [Migration("20221024214138_migra4")]
+    partial class migra4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,9 +32,6 @@ namespace IACAST_WEB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Anfitrion")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Invitado")
                         .HasColumnType("nvarchar(max)");
 
@@ -42,10 +41,20 @@ namespace IACAST_WEB.Migrations
                     b.Property<DateTime?>("Released")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("TheGuestId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TheHostId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Theme")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TheGuestId");
+
+                    b.HasIndex("TheHostId");
 
                     b.ToTable("Episode");
                 });
@@ -80,6 +89,21 @@ namespace IACAST_WEB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hosts");
+                });
+
+            modelBuilder.Entity("IACAST_WEB.Models.Episode", b =>
+                {
+                    b.HasOne("IACAST_WEB.Models.Guest", "TheGuest")
+                        .WithMany()
+                        .HasForeignKey("TheGuestId");
+
+                    b.HasOne("IACAST_WEB.Models.Hosts", "TheHost")
+                        .WithMany()
+                        .HasForeignKey("TheHostId");
+
+                    b.Navigation("TheGuest");
+
+                    b.Navigation("TheHost");
                 });
 #pragma warning restore 612, 618
         }

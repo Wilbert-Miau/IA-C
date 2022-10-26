@@ -22,8 +22,8 @@ namespace IACAST_WEB.Models
                     new Episode
                     {
                         Name = "Conversando con el senior dev Billy Fernandez",
-                        TheGuest= new Guest(),
-                        TheHost= new Hosts(),
+                        Invitado = "Billy Fernandez",
+                        Anfitrion = "Wilbert Castillo",
                         Released = DateAndTime.Now,
                         Theme= "web development"
 
