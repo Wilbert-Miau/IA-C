@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using IACAST_WEB.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace IACAST_WEB.Data
 {
-    public class IACAST_WEBContext : DbContext
+    public class IACAST_WEBContext : IdentityDbContext
     {
         public IACAST_WEBContext (DbContextOptions<IACAST_WEBContext> options)
             : base(options)
