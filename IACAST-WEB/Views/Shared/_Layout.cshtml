@@ -32,12 +32,21 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
+
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <!-- Background image -->
+            <div class="bg-image"
+                 style="
+    background-image: url(img src="C:\Users\chaxg\source\repos\IA-C\IACAST-WEB\Images\pen-4337521_1920.jpg");
+    height: 100vh;
+  "></div>
+            <!-- Background image -->
             @RenderBody()
         </main>
     </div>

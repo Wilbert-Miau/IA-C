@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IACAST_WEB.Data;
 using IACAST_WEB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IACAST_WEB.Controllers
 {
+    [Authorize]
     public class GuestsController : Controller
     {
         private readonly IACAST_WEBContext _context;

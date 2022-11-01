@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IACAST_WEB.Data;
 using IACAST_WEB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IACAST_WEB.Controllers
 {
+    
     public class EpisodesController : Controller
     {
         private readonly IACAST_WEBContext _context;
@@ -43,7 +45,10 @@ namespace IACAST_WEB.Controllers
             return View(episode);
         }
 
+
+
         // GET: Episodes/Create
+        [Authorize]
         public IActionResult Create()
         {
 
@@ -59,6 +64,7 @@ namespace IACAST_WEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,Invitado,Anfitrion")] Episode episode)
         {
             if (ModelState.IsValid)
@@ -71,6 +77,7 @@ namespace IACAST_WEB.Controllers
         }
 
         // GET: Episodes/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
 
         {
@@ -96,6 +103,7 @@ namespace IACAST_WEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,Invitado,Anfitrion")] Episode episode)
         {
             if (id != episode.Id)
@@ -127,6 +135,7 @@ namespace IACAST_WEB.Controllers
         }
 
         // GET: Episodes/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Episode == null)
@@ -145,6 +154,7 @@ namespace IACAST_WEB.Controllers
         }
 
         // POST: Episodes/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

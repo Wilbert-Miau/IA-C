@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using IACAST_WEB.Data;
 using IACAST_WEB.Models;
+using Microsoft.AspNetCore.Identity;
 namespace IACAST_WEB
 {
     public class Program
@@ -11,6 +12,9 @@ namespace IACAST_WEB
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<IACAST_WEBContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("IACAST_WEBContext") ?? throw new InvalidOperationException("Connection string 'IACAST_WEBContext' not found.")));
+
+                        builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<IACAST_WEBContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -35,12 +39,16 @@ namespace IACAST_WEB
             app.UseStaticFiles();
 
             app.UseRouting();
+                        app.UseAuthentication();;
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapRazorPages();
+
+
 
             app.Run();
         }
