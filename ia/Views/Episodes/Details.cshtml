@@ -1,0 +1,54 @@
+﻿@model ia.Models.Episode
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Episode</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Theme)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Theme)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Invitado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Invitado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Anfitrion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Anfitrion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Released)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Released)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Youtube)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Youtube)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
