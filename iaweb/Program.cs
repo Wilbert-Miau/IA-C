@@ -1,17 +1,22 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using iaweb.Data;
+using iaweb.Areas.Identity.Data;
 
-
-namespace ia
+namespace iaweb
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-          
+                        var connectionString = builder.Configuration.GetConnectionString("iawebContextConnection") ?? throw new InvalidOperationException("Connection string 'iawebContextConnection' not found.");
+
+                                    builder.Services.AddDbContext<iawebContext>(options =>
+                options.UseSqlite(connectionString));
+
+                                                builder.Services.AddDefaultIdentity<iawebUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<iawebContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
