@@ -5,108 +5,90 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using IACAST_WEB.Data;
-using IACAST_WEB.Models;
-using Microsoft.AspNetCore.Authorization;
+using iaweb.Data;
+using iaweb.Models;
 
-namespace IACAST_WEB.Controllers
+namespace iaweb.Controllers
 {
-    
-    public class EpisodesController : Controller
+    public class GuestsController : Controller
     {
-        private readonly IACAST_WEBContext _context;
+        private readonly iawebContext _context;
 
-        public EpisodesController(IACAST_WEBContext context)
+        public GuestsController(iawebContext context)
         {
             _context = context;
         }
 
-        // GET: Episodes
+        // GET: Guests
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Episode.ToListAsync());
+              return View(await _context.Guest.ToListAsync());
         }
 
-        // GET: Episodes/Details/5
+        // GET: Guests/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Episode == null)
+            if (id == null || _context.Guest == null)
             {
                 return NotFound();
             }
 
-            var episode = await _context.Episode
+            var guest = await _context.Guest
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (episode == null)
+            if (guest == null)
             {
                 return NotFound();
             }
 
-            return View(episode);
+            return View(guest);
         }
 
-
-
-        // GET: Episodes/Create
-        [Authorize]
+        // GET: Guests/Create
         public IActionResult Create()
         {
-
-           ViewBag.guestBag= _context.Guest.Select(a => a.Name);
-            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
-
-
             return View();
         }
 
-        // POST: Episodes/Create
+        // POST: Guests/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Guest guest)
         {
             if (ModelState.IsValid)
-            {   
-                _context.Add(episode);
+            {
+                _context.Add(guest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(episode);
+            return View(guest);
         }
 
-        // GET: Episodes/Edit/5
-        [Authorize]
+        // GET: Guests/Edit/5
         public async Task<IActionResult> Edit(int? id)
-
         {
-            ViewBag.guestBag = _context.Guest.Select(a => a.Name);
-
-            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
-            if (id == null || _context.Episode == null)
+            if (id == null || _context.Guest == null)
             {
                 return NotFound();
             }
 
-
-            var episode = await _context.Episode.FindAsync(id);
-            if (episode == null)
+            var guest = await _context.Guest.FindAsync(id);
+            if (guest == null)
             {
                 return NotFound();
             }
-            return View(episode);
+            return View(guest);
         }
 
-        // POST: Episodes/Edit/5
+        // POST: Guests/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Guest guest)
         {
-            if (id != episode.Id)
+            if (id != guest.Id)
             {
                 return NotFound();
             }
@@ -115,12 +97,12 @@ namespace IACAST_WEB.Controllers
             {
                 try
                 {
-                    _context.Update(episode);
+                    _context.Update(guest);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EpisodeExists(episode.Id))
+                    if (!GuestExists(guest.Id))
                     {
                         return NotFound();
                     }
@@ -131,51 +113,49 @@ namespace IACAST_WEB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(episode);
+            return View(guest);
         }
 
-        // GET: Episodes/Delete/5
-        [Authorize]
+        // GET: Guests/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Episode == null)
+            if (id == null || _context.Guest == null)
             {
                 return NotFound();
             }
 
-            var episode = await _context.Episode
+            var guest = await _context.Guest
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (episode == null)
+            if (guest == null)
             {
                 return NotFound();
             }
 
-            return View(episode);
+            return View(guest);
         }
 
-        // POST: Episodes/Delete/5
-        [Authorize]
+        // POST: Guests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Episode == null)
+            if (_context.Guest == null)
             {
-                return Problem("Entity set 'IACAST_WEBContext.Episode'  is null.");
+                return Problem("Entity set 'iawebContext.Guest'  is null.");
             }
-            var episode = await _context.Episode.FindAsync(id);
-            if (episode != null)
+            var guest = await _context.Guest.FindAsync(id);
+            if (guest != null)
             {
-                _context.Episode.Remove(episode);
+                _context.Guest.Remove(guest);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EpisodeExists(int id)
+        private bool GuestExists(int id)
         {
-          return _context.Episode.Any(e => e.Id == id);
+          return _context.Guest.Any(e => e.Id == id);
         }
     }
 }

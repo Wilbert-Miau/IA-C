@@ -1,7 +1,8 @@
-﻿@model IEnumerable<IACAST_WEB.Models.Episode>
+﻿@model IEnumerable<iaweb.Models.Episode>
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Index</h1>
@@ -19,16 +20,17 @@
                 @Html.DisplayNameFor(model => model.Theme)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Released)
-            </th>
-           
-            <th>
                 @Html.DisplayNameFor(model => model.Invitado)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Anfitrion)
             </th>
-            <th>@Html.DisplayNameFor(model => model.Youtube)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Released)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Youtube)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -42,31 +44,17 @@
                 @Html.DisplayFor(modelItem => item.Theme)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Released)
-            </td>
-           
-            
-            <td>
                 @Html.DisplayFor(modelItem => item.Invitado)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Anfitrion)
-            <td/>
-
+                @Html.DisplayFor(modelItem => item.Anfitrion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Released)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Youtube)
-                
-                    <iframe width="56"
-                        height="31"
-                        src=""
-                        frameborder="0"
-                        allowfullscreen>
-                        \
-                    </iframe>
             </td>
-
-
-
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

@@ -1,7 +1,8 @@
-﻿@model IACAST_WEB.Models.Episode
+﻿@model iaweb.Models.Episode
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Edit</h1>
@@ -24,35 +25,25 @@
                 <span asp-validation-for="Theme" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Invitado" class="control-label"></label>
+                <input asp-for="Invitado" class="form-control" />
+                <span asp-validation-for="Invitado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anfitrion" class="control-label"></label>
+                <input asp-for="Anfitrion" class="form-control" />
+                <span asp-validation-for="Anfitrion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Released" class="control-label"></label>
                 <input asp-for="Released" class="form-control" />
                 <span asp-validation-for="Released" class="text-danger"></span>
             </div>
-          
-
-
-            <div class="form-gorup">
-
-
-                @Html.DropDownListFor(m => m.Invitado, new SelectList( ViewBag.guestBag), "Invitado")
-
-            </div>
-            <div class="form-gorup">
-
-
-                @Html.DropDownListFor(m => m.Anfitrion, new SelectList( ViewBag.hostBag), "Anfitrion")
-
-            </div>
-
-
             <div class="form-group">
                 <label asp-for="Youtube" class="control-label"></label>
                 <input asp-for="Youtube" class="form-control" />
                 <span asp-validation-for="Youtube" class="text-danger"></span>
             </div>
-
-
-
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

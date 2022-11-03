@@ -5,18 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using IACAST_WEB.Data;
-using IACAST_WEB.Models;
-using Microsoft.AspNetCore.Authorization;
+using iaweb.Data;
+using iaweb.Models;
 
-namespace IACAST_WEB.Controllers
+namespace iaweb.Controllers
 {
-    
     public class EpisodesController : Controller
     {
-        private readonly IACAST_WEBContext _context;
+        private readonly iawebContext _context;
 
-        public EpisodesController(IACAST_WEBContext context)
+        public EpisodesController(iawebContext context)
         {
             _context = context;
         }
@@ -45,17 +43,9 @@ namespace IACAST_WEB.Controllers
             return View(episode);
         }
 
-
-
         // GET: Episodes/Create
-        [Authorize]
         public IActionResult Create()
         {
-
-           ViewBag.guestBag= _context.Guest.Select(a => a.Name);
-            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
-
-
             return View();
         }
 
@@ -64,11 +54,10 @@ namespace IACAST_WEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
+        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Invitado,Anfitrion,Released,Youtube")] Episode episode)
         {
             if (ModelState.IsValid)
-            {   
+            {
                 _context.Add(episode);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -77,18 +66,12 @@ namespace IACAST_WEB.Controllers
         }
 
         // GET: Episodes/Edit/5
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
-
         {
-            ViewBag.guestBag = _context.Guest.Select(a => a.Name);
-
-            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
             if (id == null || _context.Episode == null)
             {
                 return NotFound();
             }
-
 
             var episode = await _context.Episode.FindAsync(id);
             if (episode == null)
@@ -103,8 +86,7 @@ namespace IACAST_WEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Invitado,Anfitrion,Released,Youtube")] Episode episode)
         {
             if (id != episode.Id)
             {
@@ -135,7 +117,6 @@ namespace IACAST_WEB.Controllers
         }
 
         // GET: Episodes/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Episode == null)
@@ -154,14 +135,13 @@ namespace IACAST_WEB.Controllers
         }
 
         // POST: Episodes/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Episode == null)
             {
-                return Problem("Entity set 'IACAST_WEBContext.Episode'  is null.");
+                return Problem("Entity set 'iawebContext.Episode'  is null.");
             }
             var episode = await _context.Episode.FindAsync(id);
             if (episode != null)

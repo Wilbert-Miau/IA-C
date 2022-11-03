@@ -5,108 +5,90 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using IACAST_WEB.Data;
-using IACAST_WEB.Models;
-using Microsoft.AspNetCore.Authorization;
+using iaweb.Data;
+using iaweb.Models;
 
-namespace IACAST_WEB.Controllers
+namespace iaweb.Controllers
 {
-    
-    public class EpisodesController : Controller
+    public class HostsController : Controller
     {
-        private readonly IACAST_WEBContext _context;
+        private readonly iawebContext _context;
 
-        public EpisodesController(IACAST_WEBContext context)
+        public HostsController(iawebContext context)
         {
             _context = context;
         }
 
-        // GET: Episodes
+        // GET: Hosts
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Episode.ToListAsync());
+              return View(await _context.Hosts.ToListAsync());
         }
 
-        // GET: Episodes/Details/5
+        // GET: Hosts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Episode == null)
+            if (id == null || _context.Hosts == null)
             {
                 return NotFound();
             }
 
-            var episode = await _context.Episode
+            var hosts = await _context.Hosts
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (episode == null)
+            if (hosts == null)
             {
                 return NotFound();
             }
 
-            return View(episode);
+            return View(hosts);
         }
 
-
-
-        // GET: Episodes/Create
-        [Authorize]
+        // GET: Hosts/Create
         public IActionResult Create()
         {
-
-           ViewBag.guestBag= _context.Guest.Select(a => a.Name);
-            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
-
-
             return View();
         }
 
-        // POST: Episodes/Create
+        // POST: Hosts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Hosts hosts)
         {
             if (ModelState.IsValid)
-            {   
-                _context.Add(episode);
+            {
+                _context.Add(hosts);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(episode);
+            return View(hosts);
         }
 
-        // GET: Episodes/Edit/5
-        [Authorize]
+        // GET: Hosts/Edit/5
         public async Task<IActionResult> Edit(int? id)
-
         {
-            ViewBag.guestBag = _context.Guest.Select(a => a.Name);
-
-            ViewBag.hostBag = _context.Hosts.Select(a => a.Name);
-            if (id == null || _context.Episode == null)
+            if (id == null || _context.Hosts == null)
             {
                 return NotFound();
             }
 
-
-            var episode = await _context.Episode.FindAsync(id);
-            if (episode == null)
+            var hosts = await _context.Hosts.FindAsync(id);
+            if (hosts == null)
             {
                 return NotFound();
             }
-            return View(episode);
+            return View(hosts);
         }
 
-        // POST: Episodes/Edit/5
+        // POST: Hosts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Hosts hosts)
         {
-            if (id != episode.Id)
+            if (id != hosts.Id)
             {
                 return NotFound();
             }
@@ -115,12 +97,12 @@ namespace IACAST_WEB.Controllers
             {
                 try
                 {
-                    _context.Update(episode);
+                    _context.Update(hosts);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EpisodeExists(episode.Id))
+                    if (!HostsExists(hosts.Id))
                     {
                         return NotFound();
                     }
@@ -131,51 +113,49 @@ namespace IACAST_WEB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(episode);
+            return View(hosts);
         }
 
-        // GET: Episodes/Delete/5
-        [Authorize]
+        // GET: Hosts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Episode == null)
+            if (id == null || _context.Hosts == null)
             {
                 return NotFound();
             }
 
-            var episode = await _context.Episode
+            var hosts = await _context.Hosts
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (episode == null)
+            if (hosts == null)
             {
                 return NotFound();
             }
 
-            return View(episode);
+            return View(hosts);
         }
 
-        // POST: Episodes/Delete/5
-        [Authorize]
+        // POST: Hosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Episode == null)
+            if (_context.Hosts == null)
             {
-                return Problem("Entity set 'IACAST_WEBContext.Episode'  is null.");
+                return Problem("Entity set 'iawebContext.Hosts'  is null.");
             }
-            var episode = await _context.Episode.FindAsync(id);
-            if (episode != null)
+            var hosts = await _context.Hosts.FindAsync(id);
+            if (hosts != null)
             {
-                _context.Episode.Remove(episode);
+                _context.Hosts.Remove(hosts);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EpisodeExists(int id)
+        private bool HostsExists(int id)
         {
-          return _context.Episode.Any(e => e.Id == id);
+          return _context.Hosts.Any(e => e.Id == id);
         }
     }
 }

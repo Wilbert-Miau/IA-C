@@ -25,8 +25,8 @@ namespace IACAST_WEB.Models
                         Invitado = "Billy Fernandez",
                         Anfitrion = "Wilbert Castillo",
                         Released = DateAndTime.Now,
-                        Theme= "web development"
-
+                        Theme= "web development",
+                        Youtube ="www.youtube.com"
 
                     }
 
