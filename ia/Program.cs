@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ia.Data;
+
+using Microsoft.AspNetCore.Identity;
+
+
 namespace ia
 {
     public class Program
@@ -8,8 +11,7 @@ namespace ia
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<iaContext>(options =>
-                options.UseSqlite(builder.Configuration.GetConnectionString("iaContext") ?? throw new InvalidOperationException("Connection string 'iaContext' not found.")));
+          
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -28,6 +30,7 @@ namespace ia
             app.UseStaticFiles();
 
             app.UseRouting();
+                        app.UseAuthentication();;
 
             app.UseAuthorization();
 

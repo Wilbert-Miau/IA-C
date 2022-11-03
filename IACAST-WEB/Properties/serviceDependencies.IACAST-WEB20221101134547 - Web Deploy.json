@@ -2,9 +2,10 @@
   "dependencies": {
     "mssql1": {
       "secretStore": "AzureAppSettings",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/db-prueba/databases/IACAST-WEB_db",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/db-prueba/databases/IACAST-WEB_db",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:IACAST_WEBContext"
+      "connectionId": "ConnectionStrings:IACAST_WEBContext",
+      "dynamicId": null
     }
   }
 }

@@ -11,7 +11,7 @@ namespace IACAST_WEB
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<IACAST_WEBContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("IACAST_WEBContext") ?? throw new InvalidOperationException("Connection string 'IACAST_WEBContext' not found.")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'IACAST_WEBContext' not found.")));
 
                         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<IACAST_WEBContext>();

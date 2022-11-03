@@ -65,7 +65,7 @@ namespace IACAST_WEB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,Invitado,Anfitrion")] Episode episode)
+        public async Task<IActionResult> Create([Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
         {
             if (ModelState.IsValid)
             {   
@@ -104,7 +104,7 @@ namespace IACAST_WEB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,Invitado,Anfitrion")] Episode episode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Theme,Released,Invitado,Anfitrion,Youtube")] Episode episode)
         {
             if (id != episode.Id)
             {

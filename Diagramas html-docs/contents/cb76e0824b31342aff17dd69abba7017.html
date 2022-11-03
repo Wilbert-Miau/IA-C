@@ -144,56 +144,49 @@
           <tr>
             <td>private</td>
             <td><a href="4be4e2b643500a2aca07d6225e995e97.html">ID</a></td>
-            <td><span class='label label-info'>none</span> </td>
+            <td>integer </td>
             <td></td>
           </tr>
           
           <tr>
             <td>private</td>
             <td><a href="473ab9bc1a1cd2db76f4bbb3fbfade8b.html">Name</a></td>
-            <td><span class='label label-info'>none</span> </td>
+            <td>string </td>
             <td></td>
           </tr>
           
           <tr>
             <td>private</td>
-            <td><a href="468654a37e4b7a6474bd8f8f01cfed9f.html">Episode_number</a></td>
-            <td><span class='label label-info'>none</span> </td>
+            <td><a href="49e7e6edc806d1f1fac04c373755565f.html">Theme</a></td>
+            <td>string </td>
             <td></td>
           </tr>
           
           <tr>
             <td>private</td>
-            <td><a href="49e7e6edc806d1f1fac04c373755565f.html">Guest</a></td>
-            <td><span class='label label-info'>none</span> </td>
+            <td><a href="d6c33216bdf435d265c5eb971144f1bd.html">Invitado</a></td>
+            <td>string </td>
             <td></td>
           </tr>
           
           <tr>
             <td>private</td>
-            <td><a href="d6c33216bdf435d265c5eb971144f1bd.html">Theme</a></td>
-            <td><span class='label label-info'>none</span> </td>
+            <td><a href="a5a300331469a6067b1f87614a43bbe5.html">Anfitrion</a></td>
+            <td>string </td>
             <td></td>
           </tr>
           
           <tr>
             <td>private</td>
-            <td><a href="a5a300331469a6067b1f87614a43bbe5.html">Tags</a></td>
-            <td><span class='label label-info'>none</span> </td>
+            <td><a href="5f3c3e0a6701624e88f23272b3b256de.html">Released</a></td>
+            <td>date </td>
             <td></td>
           </tr>
           
           <tr>
             <td>private</td>
-            <td><a href="5f3c3e0a6701624e88f23272b3b256de.html">Image</a></td>
-            <td><span class='label label-info'>none</span> </td>
-            <td></td>
-          </tr>
-          
-          <tr>
-            <td>private</td>
-            <td><a href="0dfcb30567263ca20a51a6af17116ed7.html">Host</a></td>
-            <td><span class='label label-info'>none</span> </td>
+            <td><a href="0dfcb30567263ca20a51a6af17116ed7.html">Youtube</a></td>
+            <td>string </td>
             <td></td>
           </tr>
           
@@ -234,6 +227,30 @@
           <tr>
             <td>public</td>
             <td><a href="dd173d4a2fa6e5767520b93051f78ef0.html">Read()</a></td>
+            <td></td>
+          </tr>
+          
+          <tr>
+            <td>public</td>
+            <td><a href="382a668bf2a3fb306c58c4b3f6e2429a.html">Create(id, name, theme, invitado, anfitrion, released, youtube)</a></td>
+            <td></td>
+          </tr>
+          
+          <tr>
+            <td>public</td>
+            <td><a href="f22353a9d4528e425b249555966f89f6.html">Delete(id)</a></td>
+            <td></td>
+          </tr>
+          
+          <tr>
+            <td>public</td>
+            <td><a href="e1c2f9b61689dea453062b2ad95343b6.html">Edit(id, name, theme, invitado, anfitrion, released, youtube)</a></td>
+            <td></td>
+          </tr>
+          
+          <tr>
+            <td>public</td>
+            <td><a href="e6316b481f9e579a7d40220ec3b68a77.html">Read(id)</a></td>
             <td></td>
           </tr>
           
@@ -446,17 +463,19 @@
         
         <li><a href='533549a1eb3713c547ffbf1314000e9b.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Guest—Podcast Episode)</a></li>
         
+        <li><a href='e80e092d309e5fb75b3a7a43b10fcae9.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Guest—Podcast Episode)</a></li>
+        
         <li><a href='bd6b393064e124ed52047755b503d8cc.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Host—Podcast Episode)</a></li>
         
         <li><a href='a44cd9423c367a59393f0d560eefefc0.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Host—Podcast Episode)</a></li>
         
-        <li><a href='e80e092d309e5fb75b3a7a43b10fcae9.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Guest—Podcast Episode)</a></li>
-        
-        <li><a href='f73a578b928577f9a8fdd3b823c228b5.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Guest—Podcast Episode)</a></li>
-        
         <li><a href='5539556832c3e9581345bd8f40eec011.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Host—Podcast Episode)</a></li>
         
-        <li><a href='c6b112b6729242819cdb05a90b359983.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Host—Podcast Episode)</a></li>
+        <li><a href='0cb4ff4919645d7877c0ec927a9722e3.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Podcast Episode—Podcast Episode)</a></li>
+        
+        <li><a href='f64944e07bfbc29dd303d22d3b9d0f54.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Guest—Podcast Episode)</a></li>
+        
+        <li><a href='d1cdb1784ebeb03699ebac952513e3c3.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Host—Podcast Episode)</a></li>
         
     </ul>
 </section>
@@ -472,6 +491,12 @@
     <ul class="nav nav-list">
         
         <li><a href='533549a1eb3713c547ffbf1314000e9b.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Guest—Podcast Episode)</a></li>
+        
+        <li><a href='0cb4ff4919645d7877c0ec927a9722e3.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Podcast Episode—Podcast Episode)</a></li>
+        
+        <li><a href='f64944e07bfbc29dd303d22d3b9d0f54.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Guest—Podcast Episode)</a></li>
+        
+        <li><a href='d1cdb1784ebeb03699ebac952513e3c3.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Host—Podcast Episode)</a></li>
         
     </ul>
 </section>
