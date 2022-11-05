@@ -78,6 +78,9 @@
                             
                        
                         }
+                        else{
+                            <h6>Inicie sesion para editar</h6>
+                        }
                         @if (User.Identity.IsAuthenticated)
                         {
                          <a asp-action= "Delete" asp-route-id = "@item.Id" > Delete </a>

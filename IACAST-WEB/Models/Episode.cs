@@ -30,7 +30,6 @@ namespace IACAST_WEB.Models
         [DataType(DataType.Date)]
         public DateTime Released { get; set; }
         
-        [RegularExpression(@"^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$")]
         public string? Youtube { get; set; }
     }
 }
