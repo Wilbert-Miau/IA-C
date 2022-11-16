@@ -4,6 +4,7 @@ using IACAST_WEB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IACAST_WEB.Migrations
 {
     [DbContext(typeof(IACAST_WEBContext))]
-    partial class IACAST_WEBContextModelSnapshot : ModelSnapshot
+    [Migration("20221116191538_Post2.1")]
+    partial class Post21
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

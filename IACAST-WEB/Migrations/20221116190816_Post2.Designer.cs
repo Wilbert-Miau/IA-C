@@ -4,6 +4,7 @@ using IACAST_WEB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IACAST_WEB.Migrations
 {
     [DbContext(typeof(IACAST_WEBContext))]
-    partial class IACAST_WEBContextModelSnapshot : ModelSnapshot
+    [Migration("20221116190816_Post2")]
+    partial class Post2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,10 +157,6 @@ namespace IACAST_WEB.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(65)
-                        .HasColumnType("nvarchar(65)");
-
-                    b.Property<string>("imagenName")
                         .HasMaxLength(65)
                         .HasColumnType("nvarchar(65)");
 
