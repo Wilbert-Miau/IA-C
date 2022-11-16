@@ -10,10 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\code-ge6800a02e_1920.jpg" />
     <Content Remove="wwwroot\pen-4337521_1920.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\code-ge6800a02e_1920.jpg" />
     <None Include="wwwroot\pen-4337521_1920.jpg" />
   </ItemGroup>
 

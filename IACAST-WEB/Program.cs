@@ -14,6 +14,7 @@ namespace IACAST_WEB
                 options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'IACAST_WEBContext' not found.")));
 
                         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<IACAST_WEBContext>();
 
             // Add services to the container.

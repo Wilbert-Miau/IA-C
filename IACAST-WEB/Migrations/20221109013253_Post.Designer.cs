@@ -4,6 +4,7 @@ using IACAST_WEB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IACAST_WEB.Migrations
 {
     [DbContext(typeof(IACAST_WEBContext))]
-    partial class IACAST_WEBContextModelSnapshot : ModelSnapshot
+    [Migration("20221109013253_Post")]
+    partial class Post
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,43 +93,6 @@ namespace IACAST_WEB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hosts");
-                });
-
-            modelBuilder.Entity("IACAST_WEB.Models.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Author")
-                        .HasMaxLength(65)
-                        .HasColumnType("nvarchar(65)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(65)
-                        .HasColumnType("nvarchar(65)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(65)
-                        .HasColumnType("nvarchar(65)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Post");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

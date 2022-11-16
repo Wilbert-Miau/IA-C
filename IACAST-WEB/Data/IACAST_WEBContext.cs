@@ -20,5 +20,7 @@ namespace IACAST_WEB.Data
         public DbSet<IACAST_WEB.Models.Guest> Guest { get; set; }
 
         public DbSet<IACAST_WEB.Models.Hosts> Hosts { get; set; }
+
+        public DbSet<IACAST_WEB.Models.Post> Post { get; set; }
     }
 }
