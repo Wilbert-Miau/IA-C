@@ -14,9 +14,9 @@ namespace IACAST_WEB.Controllers
     
     public class EpisodesController : Controller
     {
-        private readonly IACAST_WEBContext _context;
+        private readonly SQLiteContext _context;
 
-        public EpisodesController(IACAST_WEBContext context)
+        public EpisodesController(SQLiteContext context)
         {
             _context = context;
         }

@@ -9,17 +9,17 @@
 
 
     <div class="row mb-2">
-        <div class="col-md-12">
+        <div class="col-md-12 px-0">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-3 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary">Articulo</strong>
                     <h3 class="mb-0"> @ViewBag.PostTitle </h3>
                     <div class="mb-1 text-muted">Nov 12</div>
                     <p class="card-text mb-auto">@ViewBag.PostDescription</p>
-                    <a href="/Posts/Details/ @ViewBag.PostId" class="stretched-link">Continua leyendo</a>
+                    <a href="/Post2/Details/ @ViewBag.PostId" class="stretched-link">Continua leyendo</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                    <img src="@ViewBag.PostImg" class="card-img-top" alt="thumbnail" height="250" width="250">
+                    <img src="Image/@ViewBag.PostImg" class="card-img-top" alt="thumbnail" height="250" width="250">
                      
 
                 </div>

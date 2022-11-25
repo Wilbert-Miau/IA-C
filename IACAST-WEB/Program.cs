@@ -10,12 +10,12 @@ namespace IACAST_WEB
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<IACAST_WEBContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'IACAST_WEBContext' not found.")));
+            builder.Services.AddDbContext<SQLiteContext>(options =>
+                options.UseSqlite(builder.Configuration.GetConnectionString("SQLITE") ?? throw new InvalidOperationException("Connection string not found.")));
 
                         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<IACAST_WEBContext>();
+                .AddEntityFrameworkStores<SQLiteContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

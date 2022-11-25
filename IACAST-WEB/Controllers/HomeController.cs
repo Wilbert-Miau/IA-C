@@ -10,14 +10,14 @@ namespace IACAST_WEB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IACAST_WEBContext _context;
-        public HomeController(ILogger<HomeController> logger, IACAST_WEBContext context)
+        private readonly SQLiteContext _context;
+        public HomeController(ILogger<HomeController> logger, SQLiteContext context)
         {
             _context = context;
             _logger = logger;
         }
 
-        public IACAST_WEBContext Get_context()
+        public SQLiteContext Get_context()
         {
             return _context;
         }
@@ -27,13 +27,13 @@ namespace IACAST_WEB.Controllers
         {
             
 
-            ViewBag.PostDescription = _context.Post.Select(a => a.Description).FirstOrDefault();
+            ViewBag.PostDescription = _context.Post2.Select(a => a.Description).FirstOrDefault();
             List<object> titulos= new List<object>();
 
-            ViewBag.PostTitle =  _context.Post.Select(a => a.Title).FirstOrDefault();
+            ViewBag.PostTitle =  _context.Post2.Select(a => a.Title).FirstOrDefault();
 
-            ViewBag.PostId = _context.Post.Select(a => a.Id).FirstOrDefault();
-            ViewBag.PostImg = _context.Post.Select(a => a.ImageUrl).FirstOrDefault();
+            ViewBag.PostId = _context.Post2.Select(a => a.Id).FirstOrDefault();
+            ViewBag.PostImg = _context.Post2.Select(a => a.imagenName).FirstOrDefault();
 
             return View();
         }

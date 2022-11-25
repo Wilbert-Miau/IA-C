@@ -14,9 +14,9 @@ namespace IACAST_WEB.Controllers
     
     public class PostsController : Controller
     {
-        private readonly IACAST_WEBContext _context;
+        private readonly SQLiteContext _context;
 
-        public PostsController(IACAST_WEBContext context)
+        public PostsController(SQLiteContext context)
         {
             _context = context;
         }
