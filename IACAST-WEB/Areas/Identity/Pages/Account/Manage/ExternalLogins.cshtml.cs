@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using IACAST_WEB.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,14 +17,14 @@ namespace IACAST_WEB.Areas.Identity.Pages.Account.Manage
 {
     public class ExternalLoginsModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IUserStore<IdentityUser> _userStore;
+        private readonly UserManager<IACAST_WEBUser> _userManager;
+        private readonly SignInManager<IACAST_WEBUser> _signInManager;
+        private readonly IUserStore<IACAST_WEBUser> _userStore;
 
         public ExternalLoginsModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            IUserStore<IdentityUser> userStore)
+            UserManager<IACAST_WEBUser> userManager,
+            SignInManager<IACAST_WEBUser> signInManager,
+            IUserStore<IACAST_WEBUser> userStore)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -69,7 +70,7 @@ namespace IACAST_WEB.Areas.Identity.Pages.Account.Manage
                 .ToList();
 
             string passwordHash = null;
-            if (_userStore is IUserPasswordStore<IdentityUser> userPasswordStore)
+            if (_userStore is IUserPasswordStore<IACAST_WEBUser> userPasswordStore)
             {
                 passwordHash = await userPasswordStore.GetPasswordHashAsync(user, HttpContext.RequestAborted);
             }

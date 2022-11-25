@@ -8,9 +8,9 @@ namespace IACAST_WEB.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new IACAST_WEBContext(
+            using (var context = new SQLiteContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<IACAST_WEBContext>>()))
+                    DbContextOptions<SQLiteContext>>()))
             {
                 // Look for any movies.
                 if (context.Episode.Any())

@@ -11,12 +11,12 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace IACAST_WEB.Controllers
 {
-    [Authorize]
+    
     public class HostsController : Controller
     {
-        private readonly IACAST_WEBContext _context;
+        private readonly SQLiteContext _context;
 
-        public HostsController(IACAST_WEBContext context)
+        public HostsController(SQLiteContext context)
         {
             _context = context;
         }
@@ -46,6 +46,7 @@ namespace IACAST_WEB.Controllers
         }
 
         // GET: Hosts/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +55,8 @@ namespace IACAST_WEB.Controllers
         // POST: Hosts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Hosts hosts)
@@ -68,6 +71,8 @@ namespace IACAST_WEB.Controllers
         }
 
         // GET: Hosts/Edit/5
+        [Authorize]
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Hosts == null)
@@ -86,6 +91,8 @@ namespace IACAST_WEB.Controllers
         // POST: Hosts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Hosts hosts)
@@ -119,6 +126,8 @@ namespace IACAST_WEB.Controllers
         }
 
         // GET: Hosts/Delete/5
+        [Authorize]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Hosts == null)
@@ -137,6 +146,8 @@ namespace IACAST_WEB.Controllers
         }
 
         // POST: Hosts/Delete/5
+        [Authorize]
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

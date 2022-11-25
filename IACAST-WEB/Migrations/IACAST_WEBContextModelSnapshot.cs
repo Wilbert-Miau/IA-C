@@ -93,6 +93,80 @@ namespace IACAST_WEB.Migrations
                     b.ToTable("Hosts");
                 });
 
+            modelBuilder.Entity("IACAST_WEB.Models.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Author")
+                        .HasMaxLength(65)
+                        .HasColumnType("nvarchar(65)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(65)
+                        .HasColumnType("nvarchar(65)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(65)
+                        .HasColumnType("nvarchar(65)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Post");
+                });
+
+            modelBuilder.Entity("IACAST_WEB.Models.Post2", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Author")
+                        .HasMaxLength(65)
+                        .HasColumnType("nvarchar(65)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(65)
+                        .HasColumnType("nvarchar(65)");
+
+                    b.Property<string>("imagenName")
+                        .HasMaxLength(65)
+                        .HasColumnType("nvarchar(65)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Post2");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

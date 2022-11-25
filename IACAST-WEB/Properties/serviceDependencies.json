@@ -4,6 +4,15 @@
       "type": "mssql",
       "connectionId": "ConnectionStrings:IACAST_WEBContext",
       "dynamicId": null
+    },
+    "mssql2": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:SQLITE"
+    },
+    "sqlite1": {
+      "ignored": "true",
+      "type": "sqlite"
     }
   }
 }
